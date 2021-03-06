@@ -31,10 +31,10 @@ class Agent(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE)
 
-    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    organisation = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.user.username}'
+        return f'{self.user.email}'
 
 
 def post_user_creation_signal(sender, instance, created, **kwargs):
