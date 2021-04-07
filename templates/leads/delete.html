@@ -1,11 +1,22 @@
-<div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
-    <h2 class="text-sm title-font text-gray-500 tracking-widest">Are you sure you want to delete this lead?</h2>
-<p class="leading-relaxed mb-4">
-    <form action="." method="POST">
-      {% csrf_token %} {{ form.as_p }}
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-  </p>
+{% extends "base.html" %} {% block content %} {% load tailwind_filters %}
+<div class="w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+  <div class="mx-auto max-w-lg">
+    <a href="{% url 'leads:leads_list' %}">Go back to Leads list page</a>
+    <h2 class="text-sm title-font text-gray-500 tracking-widest mt-8">
+      Are you sure you want to delete this lead?
+    </h2>
+    <div class="leading-relaxed mt-4 mx-auto">
+      <form action="." method="POST">
+        {% csrf_token %} {{ form|crispy }}
+        <div class="">
+          <input
+            type="submit"
+            value="Yes"
+            class="py-2 bg-blue-500 hover:bg-blue-600 text-indigo-50 w-full"
+          />
+        </div>
+      </form>
+    </div>
   </div>
+</div>
+{% endblock content %}

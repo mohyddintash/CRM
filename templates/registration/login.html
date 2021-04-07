@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block content %}
+{% load tailwind_filters %}
+<div class="max-w-lg mx-auto">
+  <form method="POST">
+    {% csrf_token %} {{ form|crispy }}
+    <button type="submit" class="px-3 py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-indigo-50 w-full mt-5">Login</button>
+    <hr />
+  </form>
+  <div class="mt-5 border-t border-gray-300">
+    <a href="{% url 'password_reset' %}" class="hover:text-blue-600"><small>Forgot your psasword<?/small></a>
+  </div>
+</div>
+{% endblock content %}

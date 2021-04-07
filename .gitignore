@@ -130,3 +130,5 @@ dmypy.json
 
 # VS Code local config
 .vscode/
+.prettierignore
+.swp

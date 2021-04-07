@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block content %} {% load tailwind_filters %}
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <div class="w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">
+          Update Lead
+        </h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">
+          {{ lead.first_name }} {{ lead.last_name }}
+        </h1>
+        <div class="flex mb-4">
+          <a
+            href="{% url 'leads:lead_details' lead.id %}"
+            class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1"
+            >Overview</a
+          >
+          <a
+            class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1"
+          >
+            Edit Category
+          </a>
+          <a
+            class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1"
+            href="{% url 'leads:lead_update' lead.id %}"
+            >Edit Details</a
+          >
+        </div>
+        <div class="leading-relaxed mb-4 max-w-md">
+          <form action="." method="POST">
+            <div class="flex items-center">
+              {% csrf_token %} {{ form|crispy }}
+              <div class="ml-3 mt-1">
+                <input
+                  type="submit"
+                  value="Submit"
+                  class="px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-indigo-50"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
